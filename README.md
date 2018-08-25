@@ -32,7 +32,7 @@ The project started working on the Simulink model of the Automatic Transmission 
 * [MATLAB & Simulink](http://www.mathworks.com/downloads/) - The software used in the project
 
 ## Authors
-* **Luigi Berducci** - *Initial work* - [luigiberducci](https://github.com/luigiberducci)
+* **Luigi Berducci** - *University of Rome La Sapienza* - [luigiberducci](https://github.com/luigiberducci)
 
 ## License
 This project is licensed under the MIT License.
