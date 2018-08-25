@@ -29,7 +29,7 @@ The project started working on the Simulink model of the Automatic Transmission 
 
 ## Built With
 
-* [MATLAB & Simulink](http://www.mathworks.com/downloads/) - The software mainly used in the project
+* [MATLAB & Simulink](http://www.mathworks.com/downloads/) - The software used in the project
 
 ## Authors
 * **Luigi Berducci** - *Initial work* - [luigiberducci](https://github.com/luigiberducci)
