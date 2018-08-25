@@ -1,0 +1,4 @@
+With e=d=0.1 when the OAA calls SRA+ (SRA+Hypotesis testing) then it run SRA+(sqrt(e), d/3).
+Then SRA is executed with e=0.3_ d=0.0333.
+Then the number of samples for the hypotesis testing is log(d)/log(1-e)=8._
+This number is quite small. Is it ok?
