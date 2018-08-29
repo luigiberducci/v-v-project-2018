@@ -17,68 +17,111 @@ function header
 function usage()
 {
     echo -e "Usage:\t./run_parallel_sensitivity_estimation epsilon delta input-dir-path output-file-path"
-    echo -e "\tepsilon\t\terror in MonteCarlo hypotesis testing"
-    echo -e "\tdelta\t\tconfidence in MonteCarlo hypotesis testing"
+    echo -e "\tepsilon\t\t\terror in MonteCarlo hypotesis testing"
+    echo -e "\tdelta\t\t\tconfidence in MonteCarlo hypotesis testing"
     echo -e "\tinput-dir-path\t\tpath to the starting directory containing all models directories"
-    echo -e "\toutput-file-path\t\tpath to output file in which write the result"
+    echo -e "\toutput-file-path\tpath to output file in which write the result"
     #TODO: parametrization of epsilon2, delta2 for OAA directly from this script
 }
 
 # Define Not enough input arguments
 function not_enough_args()
 {
-    echo "Error:\tnot enough input arguments"
+    echo -e "Error:\tnot enough input arguments"
     echo ""
     usage
 }
 
 function too_many_args()
 {
-    echo "Error:\ttoo many input arguments"
+    echo -e "Error:\ttoo many input arguments"
     echo ""
     usage
 }
 
+function illegal_type_arg()
+{
+    echo -e "Error:\tillegal type for input parameter $1 (Expected a $2 value)"
+    echo ""
+    usage
+}
+
+function print_init_warning()
+{
+    echo -e "[Info] Input parameters are correct."
+    echo -e "[Info] Notice that the output file $OUTPUT_FILE will be overwritten, if it exists."
+    echo ""
+}
+
+function print_input_params()
+{
+    echo -e "[Info] The parameters are the following:"
+    echo -e "\tepsilon\t\t\t${EPSILON}"
+    echo -e "\tdelta\t\t\t${DELTA}"
+    echo -e "\tinput-dir\t\t${INPUT_DIR}"
+    echo -e "\toutput-file\t\t${OUTPUT_FILE}"
+    echo ""
+}
+
+# Global parameters
+TIME_SUFFIX=`date | sed 's/ //g' | tr , _`
+DEFAULT_OUTPUT_FILE="./out/result_${TIME_SUFFIX}.out"
+
 # Check number of input parameters
-if [ $#@ -lt 3 ]
+if [ $# -lt 3 ]
 then
     not_enough_args
     exit 1
 fi
 
-if [ $#@ -gt 4 ]
+if [ $# -gt 4 ]
 then
     too_many_args
     exit 1
 fi
 
 # Check type of input parameters
+EPSILON=$1
+DELTA=$2
+INPUT_DIR=$3
+OUTPUT_FILE=$4
 
-while [ "$1" != "" ]
-do
-    PARAM=`echo $1 | awk -F= '{print $1}'`
-    VALUE=`echo $1 | awk -F= '{print $2}'`
-    case $PARAM in
-        -h | --help)
-            usage
-            exit
-            ;;
-        --environment)
-            ENVIRONMENT=$VALUE
-            ;;
-        --db-path)
-            DB_PATH=$VALUE
-            ;;
-        *)
-            echo "ERROR: unknown parameter \"$PARAM\""
-            usage
-            exit 1
-            ;;
-    esac
-    shift
-done
+decimal_regex="0*[0-1]\.[0-9][0-9]*"    #Real in [0,1]
+linux_path_regex="^(/[^/ ]*)+/?$"             #Path without blank spaces
 
+if [[ ! $EPSILON =~ $decimal_regex ]]
+then
+    illegal_type_arg $EPSILON "real"
+    exit 1
+fi
 
+if [[ ! $DELTA =~ $decimal_regex ]]
+then
+    illegal_type_arg $DELTA "real"
+    exit 1
+fi
+
+if [ ! -d $INPUT_DIR ]
+then
+    illegal_type_arg $INPUT_DIR "string"
+    exit 1
+fi
+
+if [[ $OUTPUT_FILE == "" ]]
+then
+    OUTPUT_FILE=$DEFAULT_OUTPUT_FILE
+fi
+
+OUTPUT_DIR=`dirname $OUTPUT_FILE`
+if [ ! -d $OUTPUT_DIR ]
+then
+    illegal_type_arg $OUTPUT_FILE "string"
+    exit 1
+fi
+
+# Print input data and warning
+print_input_params
+print_init_warning
 
 # Check existance of OUTPUT_FILE, eventually overwrite
 
