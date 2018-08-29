@@ -63,9 +63,23 @@ function print_input_params()
     echo ""
 }
 
+function ceil()
+{
+    echo "$1" | perl -nl -MPOSIX -e 'print ceil($_);'
+}
+
+function floor()
+{
+    echo "$1" | perl -nl -MPOSIX -e 'print floor($_);'
+}
+
 # Global parameters
 TIME_SUFFIX=`date | sed 's/ //g' | tr , _`
 DEFAULT_OUTPUT_FILE="./out/result_${TIME_SUFFIX}.out"
+FILTER_INPUT_DIR="complemented_guard_[0-9]"
+PREFIX_MODEL_MAIN_FILE="^main"
+RESULT_FILEPATH="res/result.csv"
+NUM_PARALLELISM=2
 
 # Check number of input parameters
 if [ $# -lt 3 ]
@@ -123,20 +137,59 @@ fi
 print_input_params
 print_init_warning
 
-# Check existance of OUTPUT_FILE, eventually overwrite
-
 # Define N as number of mutated models in INPUT_DIR
+model_dirs=`ls -v $INPUT_DIR | grep $FILTER_INPUT_DIR`
+N=`echo $model_dirs | sed 's/ /\n/g' | wc -l`
 
-# Compute M using MonteCarlo
+# Compute M using MonteCarlo, the computed value is rounded up
+expression="l($DELTA)/l(1-$EPSILON)"
+M=`echo $expression | bc -l`
 
-# Create M random numbers in [0,N-1],
+# Create M random numbers in [1,N],
 # each random number represents a model in INPUT_DIR according to the order of `ls`
+MIN=1
+MAX=$N
+random_indexes=""
+echo MAX $MAX
+for i in `seq 0 $M`
+do
+    r=`shuf -i $MIN-$MAX -n 1`    #random number between [1,N]
+    if [ $i -eq 0 ]
+    then
+        random_indexes+="$r"
+    else
+        random_indexes+=" $r"
+    fi
+done
 
 # Create command string, each row contains a command associated with one of the M random models
 # Iterate on models in INPUT_DIR
+commands=""
+fetch_from_files=""
+i=0
+for model_index in $random_indexes
+do
+    model_dir=$INPUT_DIR/`echo $model_dirs | cut -d ' ' -f $model_index`
+    model_main_file=`ls $model_dir | grep ${PREFIX_MODEL_MAIN_FILE}`
+    model_result_file="$model_dir/$RESULT_FILEPATH"
+    commands+="matlab -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${model_dir}'; MODEL_NAME='${model_main_file}'; run; exit;\"\n"
+    #DEBUG#commands+="echo $i >> $model_result_file\n"
+    fetch_from_files+="$model_result_file\n"
+    i=$((i+1))
+done
 
 # Run parallel executions
+echo -e $commands | parallel -P $NUM_PARALLELISM
 
-# Fetch output data from each execution
+# Fetch output data from each execution and write them in OUTPUT_FILE
+fetch_from_files="${fetch_from_files::-2}"    #delete last '\n'
+for file in `echo -e $fetch_from_files`
+do
+    echo $file
+    tail $file -n 1 >> $OUTPUT_FILE
+    head -n -1 $file > $file.tmp ;
+    mv $file.tmp $file
+done
 
-# Write final result on OUTPUT_FILE
+# Compute the final result and write it in OUTPUT_FILE
+#TODO
