@@ -1,12 +1,11 @@
 function [res, y_z, n] = SRAplus(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR)
-%SRA+: extended version of SRA with hypotesis testing
-%   input:  e in [0,1]
-%           d > 0
-%           Z, random variables indipendent and identically distributed
-%           Z is computed online
-%           MODEL_NAME, BLOCK, GROUP are variables for simulation
-%           DEBUG enable or disable the printing of simulation on file
-%   output: y_z approximated
+% SRAplus(  e: real in (0,1], d: real in (0,1], 
+%           MODEL_NAME: string, BLOCK: string, GROUP: string, 
+%           DEBUG: boolean, OUTPUT_DIR: directory path) : res: boolean, y_z: real in [0,1], n: int
+% This script is an extended version of SRA with hypotesis testing to avoid that the random variable Z gives always 0 implying non-termination.
+% The booelan output value 'res' represents the termination mode: correct termination with apprximation y_z (res=true), or termination by 
+% hypotesis testing (res=false). Finally, the script return the number of simulation required (n).
+
     %Compute SRA bound
     Y   = 4 * (exp(1)-2) * log(2/d) / (e^2);
     Y_1 = 1 + (1+e) * Y;
@@ -34,7 +33,7 @@ function [res, y_z, n] = SRAplus(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_D
         end
     end
     
-    %Set the flag res to distinguish the output by hyp. testing and by SRA
+    %Set the flag res to distinguish the termination mode
     if S==0
         res = false;
         y_z = 0;
