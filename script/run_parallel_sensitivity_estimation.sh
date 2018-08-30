@@ -77,7 +77,7 @@ function floor()
 TIME_SUFFIX=`date | sed 's/ //g' | tr , _`
 DEFAULT_OUTPUT_FILE="./out/result_${TIME_SUFFIX}.out"
 FILTER_INPUT_DIR="complemented_guard_[0-9]"
-PREFIX_MODEL_MAIN_FILE="^main"
+PREFIX_MODEL_MAIN_FILE="^main.*\.mdl$"
 RESULT_FILEPATH="res/result.csv"
 NUM_PARALLELISM=2
 
@@ -170,9 +170,9 @@ i=0
 for model_index in $random_indexes
 do
     model_dir=$INPUT_DIR/`echo $model_dirs | cut -d ' ' -f $model_index`
-    model_main_file=`ls $model_dir | grep ${PREFIX_MODEL_MAIN_FILE}`
+    model_main_file=`ls $model_dir | grep ${PREFIX_MODEL_MAIN_FILE} | cut -d . -f 1` #Take the model name, without extension
     model_result_file="$model_dir/$RESULT_FILEPATH"
-    commands+="matlab -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${model_dir}'; MODEL_NAME='${model_main_file}'; run; exit;\"\n"
+    commands+="matlab -nojvm -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${model_dir}/'; MODEL_NAME='${model_main_file}'; run; exit;\" &>${model_dir}/err/exec_${i}.out\n"
     #DEBUG#commands+="echo $i >> $model_result_file\n"
     fetch_from_files+="$model_result_file\n"
     i=$((i+1))

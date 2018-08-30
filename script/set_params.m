@@ -19,7 +19,7 @@ d = 10^-1;
 % Define subfolder names
 OUTPUT_DIR = MODEL_DIRECTORY + "out/";
 ERROR_DIR  = MODEL_DIRECTORY + "err/";
-RESULT_DIR = MODEL_DIRECTORY + "../";
+RESULT_DIR = MODEL_DIRECTORY + "res/";
 
 % Enable/Disable saving traces info
 DEBUG = true;

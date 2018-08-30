@@ -10,8 +10,16 @@ t0 = tic;
 set_params;
 
 % Run Optimal Approximation Algorithm
-[res, y, n_sra, n_oaa_1, n_oaa_2, t_sra, t_oaa_1, t_oaa_2, t_tot] = OAA(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
-
+try
+    [res, y, n_sra, n_oaa_1, n_oaa_2, t_sra, t_oaa_1, t_oaa_2, t_tot] = OAA(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
+catch ME
+    tf=toc(t0);
+    info=sprintf("[Error] Execution terminates with an exception: %s ", ME.message);
+    disp(info);
+    info=sprintf("[Info] Abort the execution on %s / %s after %0.2f seconds", MODEL_DIRECTORY, MODEL_NAME, tf);
+    disp(info);
+    exit;
+end
 % Compute elapsed time
 tf = toc(t0);
 

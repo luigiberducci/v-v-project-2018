@@ -12,7 +12,7 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.1716"
+    ComputedModelVersion    "1.4545"
     NumModelReferences	    2
     ModelReference {
       ModelRefBlockPath	      "main_model_g_5/Disturbed Subsystem|disturbed_subsystem_g_5"
@@ -211,9 +211,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "luigi"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Aug 10 14:50:18 2018"
-  RTWModifiedTimeStamp	  455813418
-  ModelVersionFormat	  "1.%<AutoIncrement:1716>"
+  LastModifiedDate	  "Thu Aug 30 17:14:23 2018"
+  RTWModifiedTimeStamp	  457550063
+  ModelVersionFormat	  "1.%<AutoIncrement:4545>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"

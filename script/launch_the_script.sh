@@ -41,8 +41,8 @@ do
         echo "###############################################################################################"
         echo "[Info] Running on $dir$filename"
 
-        #matlab -nojvm -nodisplay -nosplash -r "global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY=\"${dir}\"; MODEL_NAME=\"${filename}\"; run; exit;"
-        matlab -nodisplay -nosplash -r "global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY=\"${dir}\"; MODEL_NAME=\"${filename}\"; run; exit;"
+        echo "matlab -nojvm -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${dir}'; MODEL_NAME='${filename}'; run; exit;\""
+        matlab -nojvm -nodisplay -nosplash -r "global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${dir}'; MODEL_NAME='${filename}'; run; exit;"
 
         echo $current_exec>$MEMORY_PART_EXEC
     fi
