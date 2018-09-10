@@ -1,0 +1,20 @@
+script:
+    loop on experiments:
+        N=samples(e,d)
+        sh=crea_script_slurm(N)
+        id=sbatch sh
+        do
+            res=squeue id   #monitora che sh sia terminata
+        while(res is not empty)
+        fetch the results
+
+#1. Talk with Tronci to understand what are the experiments: varying on e1, d1, e2, d2? what range? how many?
+CHOOSE e1, d1 AND RUN A SINGLE EXECUTION ON CLUSTER.
+
+#2. Implement the above script.
+
+#3. If possible, install slurm on this machine to test the script. IMPOSSIBLE.
+
+#4. Talk with Melatti to execute this script on the cluster.
+
+#5. Reasoning on minimum. Discard the 0 because we are interested to the sensitivity >0. If so then a mutation on dead code will bring the sensitivity to 0. Suppose that all the execution give sensitivity 0 and we discard them, then we conclude global sensitivity max (=1).
