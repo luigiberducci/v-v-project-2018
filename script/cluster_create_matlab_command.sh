@@ -27,3 +27,6 @@ echo "" >> ${output_script}
 # Append Matlab command
 # echo "matlab -nojvm -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${model_directory}/'; MODEL_NAME='${main_file}'; run; exit;\" &>${model_directory}/err/exec_${curr_exec}.out" >> ${output_script}
 echo "matlab -nojvm -nodisplay -nosplash -r \"global MODEL_DIRECTORY; global MODEL_NAME; MODEL_DIRECTORY='${model_directory}/'; MODEL_NAME='${main_file}'; run; exit;\"" >> ${output_script}
+
+# Give permission
+chmod +x $output_script

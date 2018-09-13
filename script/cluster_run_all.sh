@@ -173,11 +173,12 @@ do
     i=$((i+1))
 done
 
-#TODO insert script "create_slurm_script"
-
+# Create the script which contains the call to scheduler
+# Usage:    ./cluster_create_slurm_script.sh output_file nodes task timeout out_file err_file job_name mem highest_script_id
+./cluster_create_slurm_script.sh ./cluster_slurm.sh 24 1 08:00:00 ./out/log/execution.log ./out/log/execution.err sens 118000 $((i-1))
 
 # Run parallel executions
-#TODO run slurm_script
+./cluster_slurm.sh
 
 # Fetch output data from each execution and write them in OUTPUT_FILE
 fetch_from_files="${fetch_from_files::-2}"    #delete last '\n'
