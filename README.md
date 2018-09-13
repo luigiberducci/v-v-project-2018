@@ -1,6 +1,10 @@
 # Project for V&V course 
 
-This repository contains the project for the course of "Verifica e Validazione di sistemi software", started in June 2018. It is an application of a theoretical argument studied over the classes, called "Monte Carlo Model Checking".
+This repository contains the project for the course of "Verifica e Validazione di sistemi software", started in June 2018. It is an application of a theoretical argument studied over the classes, called "Monte Carlo", applied for estimation of model sensitivity.
+
+Using an approximation algorithm (OAA) we can compute the model sensitivity with respect to a fixed software mutation (disturbance on logic control block). 
+
+We would like to have a global estimation and to this aim we apply Monte Carlo to compute the sensitivity over a certain number of random mutation. For each one we run the OAA algorithm and finally consider the sensitivity in the worst case.
 
 ## Getting Started
 
