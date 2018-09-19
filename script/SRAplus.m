@@ -1,4 +1,4 @@
-function [res, y_z, n] = SRAplus(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR)
+function [res, y_z, n] = SRAplus(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, SAVE_TRACE_RES, OUTPUT_DIR)
 % SRAplus(  e: real in (0,1], d: real in (0,1], 
 %           MODEL_NAME: string, BLOCK: string, GROUP: string, 
 %           DEBUG: boolean, OUTPUT_DIR: directory path) : res: boolean, y_z: real in [0,1], n: int
@@ -24,7 +24,7 @@ function [res, y_z, n] = SRAplus(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_D
         if S==0 && N>=M
             break
         end
-        Z_n = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
+        Z_n = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT_DIR);
         S = S + Z_n;
         N = N + 1;
         if DEBUG

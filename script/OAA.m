@@ -1,4 +1,4 @@
-function [res, y, n_sra, n_oaa_1, n_oaa_2, t_sra, t_oaa_1, t_oaa_2, t_tot] = OAA(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR)
+function [res, y, n_sra, n_oaa_1, n_oaa_2, t_sra, t_oaa_1, t_oaa_2, t_tot] = OAA(e, d, MODEL_NAME, BLOCK, GROUP, DEBUG, SAVE_TRACE_RES, OUTPUT_DIR)
 % OAA(  e: real in (0,1],
 %       d: real in (0,1],
 %       MODEL_NAME: string,
@@ -28,7 +28,7 @@ if DEBUG
 end
 
 % SRA phase
-[res, y_z, nn] = SRAplus( ee, dd, MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR );
+[res, y_z, nn] = SRAplus( ee, dd, MODEL_NAME, BLOCK, GROUP, DEBUG, SAVE_TRACE_RES, OUTPUT_DIR );
 
 % Take partial elapsed time
 t_sra=toc(t_0);
@@ -51,8 +51,8 @@ if res==true
     end
     
     for i=1:N1
-        Z_i = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
-        Z_j = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
+        Z_i = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT_DIR);
+        Z_j = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT_DIR);
         S = S + ((Z_i-Z_j)^2 / 2);
         if DEBUG
             info=sprintf("[OAA Debug] Sim result: %d %d\t Sum: %d\tN: %d\ti:%d", Z_i, Z_j, S, N1, i);
@@ -74,7 +74,7 @@ if res==true
     end
 
     for i = 1:N2
-        Z_i = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR);
+        Z_i = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT_DIR);
         S = S + Z_i;
         if DEBUG
             info=sprintf("[OAA Debug] Sim result: %d\t Sum: %d\tN: %d\ti: %d", Z_i, S, N2, i);

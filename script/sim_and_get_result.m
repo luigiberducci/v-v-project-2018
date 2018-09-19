@@ -1,11 +1,11 @@
-function y = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR)
-% sim_and_get_result( MODEL_NAME: string, BLOCK: strin, GROUP: string, DEBUG: boolean, OUTPUT_DIR: directory path ): boolean
+function y = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT_DIR)
+% sim_and_get_result( MODEL_NAME: string, BLOCK: strin, GROUP: string, SAVE_TRACE_RES: boolean, OUTPUT_DIR: directory path ): boolean
 % PRE:  model already open, MODEL_NAME, MODEL_DIRECTORY already defined in the workspace
 % POST: -
 % This function runs a simulation on the model generating a random input trace and return a boolean value
 % which represents the difference of output: if 0 the outputs of regular and mutated model are equal, if 1 the output differ.
     
-    if DEBUG==true
+    if SAVE_TRACE_RES==true
         t0 = tic;
     end
     
@@ -17,7 +17,7 @@ function y = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, DEBUG, OUTPUT_DIR)
     last= wxl(1);
     y = m(last);
 
-    if DEBUG==true
+    if SAVE_TRACE_RES==true
         [TIME, DATA_T] = signalbuilder(BLOCK, 'GET', 'Throttle', GROUP);
         [TIME, DATA_B] = signalbuilder(BLOCK, 'GET', 'Brake', GROUP);
 

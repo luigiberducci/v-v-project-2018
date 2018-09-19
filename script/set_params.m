@@ -6,6 +6,7 @@
 global BLOCK;
 global GROUP;
 global DEBUG;
+global SAVE_TRACE_RES;
 global OUTPUT_DIR;
 global ERROR_DIR;
 global RESULT_DIR;
@@ -21,8 +22,9 @@ OUTPUT_DIR = MODEL_DIRECTORY + "out/";
 ERROR_DIR  = MODEL_DIRECTORY + "err/";
 RESULT_DIR = MODEL_DIRECTORY + "res/";
 
-% Enable/Disable saving traces info
+% Enable/Disable saving traces info and print debug
 DEBUG = true;
+SAVE_TRACE_RES = false;
 
 % Set Block and Group names
 BLOCK = MODEL_NAME + "/ManeuversGUI";
