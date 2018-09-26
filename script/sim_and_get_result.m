@@ -23,6 +23,6 @@ function y = sim_and_get_result(MODEL_NAME, BLOCK, GROUP, SAVE_TRACE_RES, OUTPUT
 
         tf  = toc(t0);
         V   = [ DATA_T DATA_B tf y ];
-        dlmwrite( OUTPUT_DIR+'all_simulations.csv', V, 'delimiter', ',', '-append', 'precision', 5 );
+        dlmwrite( OUTPUT_DIR+"all_simulations.csv", V, 'delimiter', ',', '-append', 'precision', 5 );
     end
 end

@@ -1,6 +1,6 @@
 Model {
-  Name			  "twin_sldemo_autotrans"
-  Version		  9.1
+  Name			  "twin_sldemo_autotrans_old"
+  Version		  9.0
   SavedCharacterEncoding  "UTF-8"
   GraphicalInterface {
     NumRootInports	    0
@@ -12,25 +12,25 @@ Model {
       UnitExpr		      "inherit"
     }
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.307"
+    ComputedModelVersion    "1.308"
     NumModelReferences	    2
     ModelReference {
-      ModelRefBlockPath	      "twin_sldemo_autotrans/Disturbed Subsystem|disturbed_subsystem"
+      ModelRefBlockPath	      "twin_sldemo_autotrans_old/Disturbed Subsystem|disturbed_subsystem"
     }
     ModelReference {
-      ModelRefBlockPath	      "twin_sldemo_autotrans/Regular Subsystem|regular_subsystem"
+      ModelRefBlockPath	      "twin_sldemo_autotrans_old/Regular Subsystem|regular_subsystem"
     }
     NumTestPointedSignals   9
     TestPointedSignal {
       SignalName	      "Disturbed EngineRPM"
-      FullBlockPath	      "twin_sldemo_autotrans/Disturbed Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Disturbed Subsystem"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "Disturbed Speed"
-      FullBlockPath	      "twin_sldemo_autotrans/Disturbed Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Disturbed Subsystem"
       PortIndex		      2
       LogSignal		      1
       MaxPoints		      5000
@@ -38,7 +38,7 @@ Model {
     }
     TestPointedSignal {
       SignalName	      "Disturbed TransmissionRPM"
-      FullBlockPath	      "twin_sldemo_autotrans/Disturbed Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Disturbed Subsystem"
       PortIndex		      3
       LogSignal		      1
       MaxPoints		      5000
@@ -46,14 +46,14 @@ Model {
     }
     TestPointedSignal {
       SignalName	      "Throttle"
-      FullBlockPath	      "twin_sldemo_autotrans/ManeuversGUI"
+      FullBlockPath	      "twin_sldemo_autotrans_old/ManeuversGUI"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "BrakeTorque"
-      FullBlockPath	      "twin_sldemo_autotrans/ManeuversGUI"
+      FullBlockPath	      "twin_sldemo_autotrans_old/ManeuversGUI"
       PortIndex		      2
       LogSignal		      1
       MaxPoints		      5000
@@ -61,21 +61,21 @@ Model {
     }
     TestPointedSignal {
       SignalName	      ""
-      FullBlockPath	      "twin_sldemo_autotrans/Monitor"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Monitor"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "Regular EngineRPM"
-      FullBlockPath	      "twin_sldemo_autotrans/Regular Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Regular Subsystem"
       LogSignal		      1
       MaxPoints		      5000
       Decimation	      2
     }
     TestPointedSignal {
       SignalName	      "Regular Speed"
-      FullBlockPath	      "twin_sldemo_autotrans/Regular Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Regular Subsystem"
       PortIndex		      2
       LogSignal		      1
       MaxPoints		      5000
@@ -83,7 +83,7 @@ Model {
     }
     TestPointedSignal {
       SignalName	      "Regular TransmissionRPM"
-      FullBlockPath	      "twin_sldemo_autotrans/Regular Subsystem"
+      FullBlockPath	      "twin_sldemo_autotrans_old/Regular Subsystem"
       PortIndex		      3
       LogSignal		      1
       MaxPoints		      5000
@@ -99,13 +99,13 @@ Model {
     NumExternalFileReferences 2
     ExternalFileReference {
       Reference		      "disturbed_subsystem_DOWN_TABLE_1_1_True_8.mdl"
-      Path		      "twin_sldemo_autotrans/Disturbed Subsystem"
+      Path		      "twin_sldemo_autotrans_old/Disturbed Subsystem"
       SID		      "311"
       Type		      "MODEL_BLOCK"
     }
     ExternalFileReference {
       Reference		      "regular_subsystem_DOWN_TABLE_1_1_True_8.mdl"
-      Path		      "twin_sldemo_autotrans/Regular Subsystem"
+      Path		      "twin_sldemo_autotrans_old/Regular Subsystem"
       SID		      "310"
       Type		      "MODEL_BLOCK"
     }
@@ -113,8 +113,6 @@ Model {
   }
   DiagnosticSuppressor	  "on"
   SuppressorTable	  "22 serialization::archive 11 0 6 0 0 0 1 0"
-  Notes			  ""
-  NotesPlugin		  "on"
   LogicAnalyzerGraphicalSettings ""
   LogicAnalyzerPlugin	  "on"
   LogicAnalyzerSignalOrdering ""
@@ -208,9 +206,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "luigi"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Aug 02 09:29:28 2018"
-  RTWModifiedTimeStamp	  455102966
-  ModelVersionFormat	  "1.%<AutoIncrement:307>"
+  LastModifiedDate	  "Wed Sep 19 16:05:18 2018"
+  RTWModifiedTimeStamp	  459273918
+  ModelVersionFormat	  "1.%<AutoIncrement:308>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -231,7 +229,6 @@ Model {
   ShowViewerIcons	  on
   SortedOrder		  off
   VariantCondition	  off
-  ShowSubsystemDomainSpec off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
   ShowVisualizeInsertedRTB on
@@ -245,7 +242,6 @@ Model {
   BrowserShowLibraryLinks off
   FunctionConnectors	  off
   BrowserLookUnderMasks	  off
-  MultiThreadCoSim	  on
   SimulationMode	  "normal"
   VisualizeLoggedSignalsWhenLoggingToFile off
   PauseTimes		  "5"
@@ -253,8 +249,6 @@ Model {
   SnapshotBufferSize	  10
   SnapshotInterval	  10
   NumberOfLastSnapshots	  0
-  EnablePacing		  off
-  PacingRate		  1
   LinearizationMsg	  "none"
   Profile		  off
   ParamWorkspaceSource	  "MATLABWorkspace"
@@ -266,11 +260,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "twin_sldemo_autotrans"
+    model_		    "twin_sldemo_autotrans_old"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "twin_sldemo_autotrans"
+      Cell		      "twin_sldemo_autotrans_old"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -517,7 +511,7 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      9
-      Version		      "1.18.0"
+      Version		      "1.17.1"
       DisabledProps	      []
       Description	      "* Simulation Target Description\nDefault S-Function target.\n"
       Array {
@@ -525,13 +519,12 @@ Model {
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  10
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
 	  StopTime		  "150.0"
 	  AbsTol		  "1e-6"
-	  AutoScaleAbsTol	  "off"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
 	  MaxOrder		  5
@@ -562,11 +555,10 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	  SampleTimeProperty	  []
 	  DecoupledContinuousIntegration off
-	  MinimalZcImpactIntegration off
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  11
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  Decimation		  "1"
@@ -607,7 +599,7 @@ Model {
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  12
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -666,15 +658,10 @@ Model {
 	  OptimizeDataStoreBuffers on
 	  BusAssignmentInplaceUpdate on
 	  DifferentSizesBufferReuse off
-	  OptimizationLevel	  "level2"
-	  OptimizationPriority	  "Balanced"
-	  OptimizationCustomize	  on
-	  UseRowMajorAlgorithm	  off
-	  LabelGuidedReuse	  off
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  13
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    1
@@ -686,7 +673,6 @@ Model {
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
 	  SignalInfNanChecking	  "error"
-	  StringTruncationChecking "error"
 	  SignalRangeChecking	  "none"
 	  ReadBeforeWriteMsg	  "UseLocalSettings"
 	  WriteAfterWriteMsg	  "UseLocalSettings"
@@ -757,7 +743,6 @@ Model {
 	  SimStateInterfaceChecksumMismatchMsg "warning"
 	  SimStateOlderReleaseMsg "error"
 	  ChecksumConsistencyForSSReuse	"none"
-	  LibraryContextMissingDiagnostic "none"
 	  InitInArrayFormatMsg	  "warning"
 	  StrictBusMsg		  "ErrorOnBusTreatedAsVector"
 	  BusNameAdapt		  "WarnAndRepair"
@@ -791,7 +776,7 @@ Model {
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  14
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  ProdBitPerChar	  8
@@ -839,7 +824,7 @@ Model {
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  15
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
@@ -858,7 +843,7 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  16
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  ""
 	  SimCustomSourceCode	  ""
@@ -888,7 +873,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  17
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    16
@@ -975,7 +960,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      18
-	      Version		      "1.18.0"
+	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
 		Dimension		28
@@ -1049,7 +1034,6 @@ Model {
 	      InsertBlockDesc	      off
 	      InsertPolySpaceComments off
 	      SimulinkBlockComments   on
-	      BlockCommentType	      "BlockPathComment"
 	      StateflowObjectComments on
 	      MATLABSourceComments    off
 	      EnableCustomComments    off
@@ -1063,7 +1047,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      19
-	      Version		      "1.18.0"
+	      Version		      "1.17.1"
 	      Array {
 		Type			"Cell"
 		Dimension		15
@@ -1094,7 +1078,6 @@ Model {
 	      UtilityFuncGeneration   "Auto"
 	      MultiwordTypeDef	      "System defined"
 	      MultiwordLength	      2048
-	      DynamicStringBufferSize 256
 	      GenerateFullHeader      on
 	      InferredTypesCompatibility off
 	      ExistingSharedCode      ""
@@ -1140,10 +1123,6 @@ Model {
 	      LookupTableObjectStructAxisOrder "1,2,3,4,..."
 	      LUTObjectStructOrderExplicitValues "Size,Breakpoints,Table"
 	      LUTObjectStructOrderEvenSpacing "Size,Breakpoints,Table"
-	      ArrayLayout	      "Column-major"
-	      ERTHeaderFileRootName   "$R$E"
-	      ERTSourceFileRootName   "$R$E"
-	      ERTDataFileRootName     "$R_data"
 	      UseMalloc		      off
 	      ExtMode		      off
 	      ExtModeStaticAlloc      off
@@ -1165,7 +1144,7 @@ Model {
 	}
 	SlCovCC.ConfigComp {
 	  $ObjectID		  20
-	  Version		  "1.18.0"
+	  Version		  "1.17.1"
 	  DisabledProps		  []
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
@@ -1478,12 +1457,10 @@ Model {
     }
   }
   System {
-    Name		    "twin_sldemo_autotrans"
+    Name		    "twin_sldemo_autotrans_old"
     Location		    [67, 27, 1920, 1080]
-    Open		    on
+    Open		    off
     PortBlocksUseCompactNotation off
-    SetDomainSpec	    off
-    DomainSpecType	    "Deduce"
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1620,7 +1597,6 @@ Model {
 	  Name			  "tuvar"
 	  Prompt		  ""
 	  Value			  "[0:10]"
-	  Visible		  "off"
 	}
       }
       Port {
@@ -1638,8 +1614,6 @@ Model {
 	Location		[903, 56, 1810, 771]
 	Open			off
 	PortBlocksUseCompactNotation off
-	SetDomainSpec		off
-	DomainSpecType		"Deduce"
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1742,8 +1716,6 @@ Model {
 	Location		[67, 27, 1920, 1080]
 	Open			off
 	PortBlocksUseCompactNotation off
-	SetDomainSpec		off
-	DomainSpecType		"Deduce"
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -1854,8 +1826,6 @@ Model {
 	    Location		    [67, 27, 1920, 1080]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -1915,8 +1885,6 @@ Model {
 	    Location		    [67, 27, 1920, 1080]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -1976,8 +1944,6 @@ Model {
 	    Location		    [67, 27, 1920, 1080]
 	    Open		    off
 	    PortBlocksUseCompactNotation off
-	    SetDomainSpec	    off
-	    DomainSpecType	    "Deduce"
 	    ModelBrowserVisibility  off
 	    ModelBrowserWidth	    200
 	    ScreenColor		    "white"
@@ -2630,8 +2596,6 @@ Model {
 	Location		[98, 267, 744, 691]
 	Open			off
 	PortBlocksUseCompactNotation off
-	SetDomainSpec		off
-	DomainSpecType		"Deduce"
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -3096,7 +3060,7 @@ MatData {
   }
   DataRecord {
     Tag			    DataTag2
-    Data		    "  %)30     .    N ,   8    (     @         %    \"     $    !     0         %  0 $0    $   #,    =F5R:6"
+    Data		    "  %)30     .    R ,   8    (     @         %    \"     $    !     0         %  0 $0    $   #,    =F5R:6"
     "9Y0FQK4&%T:',   !V97)I9GE\";&M(86YD;&5S '9N=DUG<DED>           86-T:79E1W)O=7        !R97%$:7-P4')C;G0      &)L:T1"
     "I<W!-;V1E        9W)O=7!#;G0           !G<F]U<%)E<4-N=        &=R;W5P1$]/4E-I9       ;6]D96Q(              !B;&]C:"
     "T@              &]V97)I9&53971T:6YG<P        X    P    !@    @    &          4    (               !          D    "
@@ -3105,9 +3069,9 @@ MatData {
     "            \\#\\.    ,     8    (    !@         %    \"                0         )          X    P    !@    @    "
     "&          4    (               !          D         #@   #@    &    \"     8         !0    @    !     0    $     "
     "    \"0    @            00 X    P    !@    @    &          4    (               !          D         #@   #     & "
-    "   \"     8         !0    @               $         \"0         .    ,     8    (    !@         %    \"           "
-    "     0         )          X    P    !@    @    &          4    (               !          D         #@   #     &  "
-    "  \"     8         !0    @               $         \"0         "
+    "   \"     8         !0    @               $         \"0         .    .     8    (    !@         %    \"     $    !"
+    "     0         )    \"         \"   ! #@   #@    &    \"     8         !0    @    !     0    $         \"0    @   "
+    "      0  80 X    P    !@    @    &          4    (               !          D         "
   }
 }
 #Finite State Machines
@@ -3118,12 +3082,12 @@ MatData {
 Stateflow {
   machine {
     id			    1
-    name		    "twin_sldemo_autotrans"
+    name		    "twin_sldemo_autotrans_old"
     isLibrary		    0
     debug {
       runTimeCheck	      [0 0 0]
     }
-    sfVersion		    80000014
+    sfVersion		    80000012
     sfDemoChecksum	    [2241135386 363485141 2429405227 460882854]
     firstTarget		    2
   }
